@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1523668634 source:h:\galaga\main.cpp
+	<iostream>
+	<fstream>
+	"Galaga.h"
+	"Fighter.h"
+
+1523668634 h:\galaga\galaga.h
+	<string>
+	<sstream>
+	"SDL_Plotter.h"
+
+1523669072 h:\galaga\sdl_plotter.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
+	<string.h>
+	<iostream>
+	<string>
+	<string.h>
+	<map>
+
+1523668816 h:\galaga\fighter.h
+	"GALAGA.H"
+
