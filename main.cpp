@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include "Galaga.h"
-#include "Fighter.h"
-#include "Ship.h"
+#include "Entity.h"
+#include "Bullet.h"
 
 using namespace std;
 
@@ -10,8 +10,8 @@ int main(int argc, char ** argv)
 {
 
     SDL_Plotter g(SCREEN_WIDTH, SCREEN_HIEGHT);
-    Fighter f;
-    Ship s;
+    Entity f;
+    Entity b(3,200,200);
     char key;
     g.initSound("./sounds/lasershot.mp3");
 
@@ -46,8 +46,7 @@ int main(int argc, char ** argv)
                                     shoot(f.x,f.y,g);
 			}
 		}
-		f.drawFighter(g);
-		s.drawShip(g);
+		f.drawEntity(g);
         g.update();
     }
     return 0;
