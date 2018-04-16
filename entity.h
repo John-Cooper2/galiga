@@ -151,25 +151,25 @@ void Entity::drawShip(SDL_Plotter& g){
         for(int x = 0; x < 19; x++){
             input >> c;
             switch (c){
-                case '0': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,255,255,255,g);
+                case '0': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,64,64,64,g);
                         break;
-                case '1': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,255,192,0,g);
+                case '1': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,91,155,213,g);
                         break;
-                case '2': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,255,235,156,g);
+                case '2': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,204,255,255,g);
                         break;
-                case '3': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,0,102,255,g);
+                case '3': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,201,201,201,g);
                         break;
-                case '4': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,155,194,230,g);
+                case '4': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,165,165,165,g);
                         break;
-                case '5': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,219,219,219,g);
+                case '5': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,153,153,153,g);
                         break;
-                case '6': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,89,89,89,g);
+                case '6': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,128,128,128,g);
                         break;
-                case '7': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,165,165,165,g);
+                case '7': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,89,89,89,g);
                         break;
-                case '8': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,0,0,0,g);
+                case '8': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,115,115,115,g);
                         break;
-                case '9': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,38,38,38,g);
+                case '9': drawFromText(x,y,offsetX,offsetY,SHIP_SIZE,0,229,240,g);
                         break;
             }
         }
