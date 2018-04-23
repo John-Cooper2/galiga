@@ -3,21 +3,55 @@
 
 #include <string>
 #include <sstream>
+#include <ctime>
 #include "SDL_Plotter.h"
 
-const int SHIP_HIEGHT = 100;
-const int SHIP_WIDTH = 100;
 const int SCREEN_WIDTH = 1080;
 const int SCREEN_HIEGHT = 1080;
-const int SHIP_SIZE = 3;
-const int BULLET_SPEED = 2;
 
 void drawFromText(int x, int y, int size, int R, int G, int B, SDL_Plotter& g);
-void drawFighterBullet(int cx, int cy, SDL_Plotter& g);
-void eraseFighterBullet(int cx, int cy, SDL_Plotter& g);
-void shoot(int x, int y);
 void printLetter(string, int x, int y, int size, SDL_Plotter& g);
 void printText(string, int x, int y, int size, SDL_Plotter& g);
+
+struct GlobalTimer
+{
+    int start;
+    GlobalTimer();
+    GlobalTimer(int startTime);
+
+    int getRunTime();
+    int getTimeSince(int since);
+    int rng();
+};
+
+GlobalTimer::GlobalTimer()
+{
+    start = time(NULL);
+}
+
+GlobalTimer::GlobalTimer(int startTime)
+{
+    start = startTime;
+}
+
+int GlobalTimer::getRunTime()
+{
+    int t = time(NULL) - start;
+    return t;
+}
+
+int GlobalTimer::getTimeSince(int since)
+{
+    int t = time(NULL) - since;
+    return t;
+}
+
+int GlobalTimer::rng()
+{
+    srand(getRunTime());
+    int randomNumber = rand();
+    return randomNumber;
+}
 
 void drawFromText(int x, int y, int offsetX, int offsetY, int size, int R, int G, int B, SDL_Plotter& g)
 {
@@ -28,46 +62,12 @@ void drawFromText(int x, int y, int offsetX, int offsetY, int size, int R, int G
     }
 }
 
-void drawFighterBullet(int cx, int cy, SDL_Plotter& g)
-{
-    for(int y = cy - 20; y < cy; y++){
-        for(int x = cx - 5; x < cx; x++){
-            g.plotPixel(x,y,255, 20, 20);
-        }
-    }
-}
-
-void eraseFighterBullet(int cx, int cy, SDL_Plotter& g)
-{
-    for(int y = cy - 20; y < cy; y++){
-        for(int x = cx - 5; x < cx; x++){
-            g.plotPixel(x,y,0,0,0);
-        }
-    }
-}
-
-void shoot(int x, int y, SDL_Plotter& g)
-{
-    while (y>20)
-    {
-        eraseFighterBullet(x+45,y,g);
-        y-=BULLET_SPEED;
-        drawFighterBullet(x+45,y,g);
-        g.update();
-    }
-    if (y <= 20)
-        eraseFighterBullet(x+45,y,g);
-}
-
 
 void printLetter(string fname, int offsetX, int offsetY, int size, SDL_Plotter& g){
     ifstream input;
     char c;
     input.open(fname.c_str());
 
-    if(!input){
-        cout<< "ERROR: Text File Not Open" << endl;
-    }
     int row, col;
 
     input>> col >> row;
