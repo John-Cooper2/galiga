@@ -8,11 +8,12 @@ const int FIGHTER_SIZE = 3;
 const int BOSS_SPEED = 15;
 const int BOSS_SIZE = 8;
 
-const int SHIP_SPEED = 15;
+const int SHIP_SPEED = 1;
 const int SHIP_SIZE = 3;
 
 struct Entity{
-    int x, y, id;
+    int x, y, id, speed, drawSize;
+    bool isAlive;
     Entity();
     Entity(int eid, int ex, int ey);
 
@@ -34,6 +35,7 @@ Entity::Entity()
     id = 1;
     x = SCREEN_WIDTH/2;
     y = SCREEN_HIEGHT - 200;
+    isAlive = true;
 }
 
 Entity::Entity(int eid, int ex, int ey)
@@ -41,6 +43,21 @@ Entity::Entity(int eid, int ex, int ey)
     id = eid;
     x = ex;
     y = ey;
+
+    if(id == 1) {
+        speed = FIGHTER_SPEED;
+        drawSize = FIGHTER_SIZE;
+    }
+    else if(id == 2) {
+        speed = SHIP_SPEED;
+        drawSize = SHIP_SIZE;
+    }
+    else if(id == 3) {
+        speed = BOSS_SPEED;
+        drawSize = BOSS_SIZE;
+    }
+
+    isAlive = true;
 }
 
 void Entity::drawFighter(SDL_Plotter& g){
