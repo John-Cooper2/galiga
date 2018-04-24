@@ -28,6 +28,8 @@ const char UP_ARROW    = 1;
 const char DOWN_ARROW  = 2;
 const char LEFT_ARROW  = 3;
 const char RIGHT_ARROW = 4;
+const char LEFT_AND_SPACE = 5;
+const char RIGHT_AND_SPACE = 6;
 const int RED_SHIFT   = 65536;
 const int GREEN_SHIFT = 256;
 const int BLUE_SHIFT  = 1;
@@ -91,6 +93,8 @@ public:
     bool kbhit();
 
     char getKey();
+
+    void getArrowState(bool& left, bool& right, bool& up, bool& down, bool& space);
 
     void plotPixel(int x, int y, int r, int g, int b);
 
@@ -268,6 +272,8 @@ char SDL_Plotter::getKey(){
 	if(currentKeyStates[SDL_SCANCODE_UP])    key = UP_ARROW;
 	if(currentKeyStates[SDL_SCANCODE_LEFT])  key = LEFT_ARROW;
 	if(currentKeyStates[SDL_SCANCODE_RIGHT]) key = RIGHT_ARROW;
+	if(currentKeyStates[SDL_SCANCODE_LEFT] && currentKeyStates[SDL_SCANCODE_SPACE]) key = LEFT_AND_SPACE;
+	if(currentKeyStates[SDL_SCANCODE_RIGHT] && currentKeyStates[SDL_SCANCODE_SPACE]) key = RIGHT_AND_SPACE;
 	if(currentKeyStates[SDL_SCANCODE_RETURN]) key = SDL_SCANCODE_RETURN;
 	if(currentKeyStates[SDL_SCANCODE_ESCAPE]) quit = true;
 
